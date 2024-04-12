@@ -1,230 +1,154 @@
 import React, { useState } from 'react'
 import { Row, Col, Form, Button, Card } from 'react-bootstrap';
+import * as FaIcons from "react-icons/fa";
 
 
-export const EmployeeInformation = ({empinfo,handleEmployeeInfoChange}) => {
+export const EmployeeInformation = ({familyinfo,handleEmployeeInfoChange}) => {
 
     // const {validated,setValidated} =props
 
+ 
+
      const [showInput,setShowInput] = useState(true);
 
-     const stateSelection = ["Tamilnadu", "Kerala", "Karnataka", "Delhi"];
+    
 
-  return (
+      const families = ["Brother", "Sister", "Cousin", "Delhi"];
+
+   return (
 
 
     <div>
 
-         
-  <Card className='mb-5'>        
-  <Card.Body>
-   <Card.Title>Residence Address</Card.Title>
-   <Row>
-  <Col md={4}>
-<Form.Label className='my-label'>house No</Form.Label>
-<Form.Control
-  required
-  type="number"
-  name="houseNo"
-  value={empinfo.houseNo}
-  onChange={handleEmployeeInfoChange}
-  placeholder="Last name"
-  
-/>
-  </Col>
-  <Col md={4}>
-<Form.Label className='my-label'>Street</Form.Label>
-<Form.Control
-  required
-  type="text"
-  name="street"
-  value={empinfo.street}
-  onChange={handleEmployeeInfoChange}
-  placeholder="Enter Street"
-  
-/>
-  </Col>
-  <Col md={4}>
-<Form.Label className='my-label'>Landmark</Form.Label>
-<Form.Control
-  required
-  type="text"
-  name="landMark"
-  value={empinfo.landMark}
-  onChange={handleEmployeeInfoChange}
-  placeholder="Enter Landmark"
-  
-/>
-  </Col>
-</Row>
-
-
-<Row>
-  <Col md={4}>
-<Form.Label className='my-label'>state</Form.Label>
-<Form.Select
-  required
-  aria-label="Default select example"
-  name="state"
-  value={empinfo.state}
-  onChange={handleEmployeeInfoChange}
-  placeholder="Last name"
-  
->
-    <option disabled selected>
-        Choose State
-    </option>
-    {stateSelection.map((states)=>{
-        <option>{states}</option>
-    })}
-
-</Form.Select>
-  </Col>
-  <Col md={4}>
-<Form.Label className='my-label'>city</Form.Label>
-<Form.Control
-  required
-  type="text"
-  name="city"
-  value={empinfo.city}
-  onChange={handleEmployeeInfoChange}
-  placeholder="Enter city"
-  
-/>
-  </Col>
-  <Col md={4}>
-<Form.Label className='my-label'>Pin Code</Form.Label>
-<Form.Control
-  required
-  type="number"
-  name="pincode"
-  value={empinfo.pincode}
-  onChange={handleEmployeeInfoChange}
-  placeholder="Enter Pincode"
-  
-/>
-  </Col>
-</Row>
-  </Card.Body>
-
-
-</Card>
-
-<Card className='mb-5'>
-         
-  <Card.Body>
-   <Card.Title>permanent Address</Card.Title>
-
-   <Row>
-  <Col md={4}>
-<Form.Label className='my-label'>house No</Form.Label>
-<Form.Control
-  required
-  type="number"
-  name="houseNo"
-  value={empinfo.houseNo}
-  onChange={handleEmployeeInfoChange}
-  placeholder="Enter house no"
-  
-/>
-  </Col>
-  <Col md={4}>
-<Form.Label className='my-label'>Street</Form.Label>
-<Form.Control
-  required
-  type="text"
-  name="street"
-  value={empinfo.street}
-  onChange={handleEmployeeInfoChange}
-  placeholder="Enter Street"
-  
-/>
-  </Col>
-  <Col md={4}>
-<Form.Label className='my-label'>Landmark</Form.Label>
-<Form.Control
-  required
-  type="text"
-  name="landMark"
-  value={empinfo.landMark}
-  onChange={handleEmployeeInfoChange}
-  placeholder="Last name"
-  
-/>
-  </Col>
-</Row>
-
-<Row>
-  <Col md={4}>
-<Form.Label className='my-label'>state</Form.Label>
-<Form.Select
-  required
-  aria-label="Default select example"
-  name="state"
-  value={empinfo.state}
-  onChange={handleEmployeeInfoChange}
-  
->
-    <option disabled selected>
-        Choose State
-    </option>
-    {stateSelection.map((states)=>{
-        <option>{states}</option>
-    })}
-
-</Form.Select>
-  </Col>
-  <Col md={4}>
-<Form.Label className='my-label'>city</Form.Label>
-<Form.Control
-  required
-  type="text"
-  name="city"
-  value={empinfo.city}
-  onChange={handleEmployeeInfoChange}
-  placeholder="Enter city"
-  
-/>
-  </Col>
-  <Col md={4}>
-<Form.Label className='my-label'>Pin Code</Form.Label>
-<Form.Control
-  required
-  type="number"
-  name="pincode"
-  value={empinfo.pincode}
-  onChange={handleEmployeeInfoChange}
-  placeholder="Enter Pincode"
-  
-/>
-  </Col>
-</Row>
-
-
-
-
-  </Card.Body>
-
-
-</Card>
-
+   
  <Card className='mb-5'>
          
   <Card.Body>
-   <Card.Title>Family Member Details</Card.Title>
-   <Row>
-  <Col>
-<Form.Label className='my-label'>mobile</Form.Label>
-<Form.Control
-  required
-  type="text"
-  name="mobile"
-  value={empinfo.mobile}
-  onChange={handleEmployeeInfoChange}
-  placeholder="Last name"
-  
-/>
-  </Col>
+   <Card.Title></Card.Title>
+   <Row className="mb-3" Col="6">
+        {showInput ? (
+          <>
+            <Col md={4}>
+              <Form.Group as={Col}>
+                <Form.Label className="mylable">Family / Members</Form.Label>
+                <Form.Select
+                  aria-label="Default select example"
+                  name="relationShip"  
+                  value={familyinfo.relationShip}
+                  onChange={handleEmployeeInfoChange}
+                >
+                  <option disabled selected>
+                    Choose Relationship
+                  </option>
+
+                  {families.map((opt) => (
+                    <option>{opt}</option>
+                  ))}
+                </Form.Select>
+              </Form.Group>
+            </Col>
+          </>
+        ) : (
+          <></>
+        )}
+
+{showInput && (
+          <Col md={4}>
+            <Form.Group as={Col}>
+              <Form.Label className="mylable">full Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="fullName"
+                placeholder="Enter Full Name"
+                onChange={handleEmployeeInfoChange}
+                value={familyinfo.fullName}
+              ></Form.Control>
+            </Form.Group>
+          </Col>
+        )}
+      </Row>
+
+      <Row>
+        {showInput && (
+          <Col md={6}>
+            <Form.Group as={Col}>
+              <Form.Label className="mylable">full Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="fullName"
+                placeholder="Enter Full Name"
+                onChange={handleEmployeeInfoChange}
+                value={familyinfo.fullName}
+              ></Form.Control>
+            </Form.Group>
+          </Col>
+        )}
+      </Row>
+
+      <Row>
+        {showInput && (
+          <Col md={3}>
+            <Form.Group as={Col}>
+              <Form.Label className="mylable">Date Of Birth</Form.Label>
+              <Form.Control
+                type="date"
+                name="dateOfBirth"
+                onChange={handleEmployeeInfoChange}
+                value={familyinfo.dateOfBirth}
+              ></Form.Control>
+            </Form.Group>
+          </Col>
+        )}
+
+        {showInput && (
+          <Col md={3}>
+            <Form.Group as={Col}>
+              <Form.Label className="mylable">Mobile No</Form.Label>
+              <Form.Control
+                type="number"
+                name="mobileNo"
+                placeholder="Enter Mobile No"
+                onChange={handleEmployeeInfoChange}
+                value={familyinfo.mobileNo}
+              ></Form.Control>
+            </Form.Group>
+          </Col>
+        )}
+
+{showInput && (
+          <Col md={3}>
+            <Form.Group as={Col}>
+              <Form.Label className="mylable">Additional Notes</Form.Label>
+              <Form.Control
+                type="text"
+                name="additionalNotes"
+                placeholder="Enter Notes"
+                onChange={handleEmployeeInfoChange}
+                value={familyinfo.additionalNotes}
+              ></Form.Control>
+            </Form.Group>
+          </Col>
+        )}
+      </Row>
+
+<Row>
+
+  {showInput && (
+      <Row className="mt-3">
+      <Col md={3}>
+        <button
+          className="btn btn-secondary"
+          onClick={() => setShowInput(!showInput)}
+        >
+          Remove
+          <span className="m-1">
+            <FaIcons.FaTrash></FaIcons.FaTrash>
+          </span>
+        </button>
+      </Col>
+    </Row>
+
+  )}
 </Row>
   </Card.Body>
 
